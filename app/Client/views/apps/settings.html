@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Settings</title>
+    <link rel="stylesheet" href="../css/animations.css" type="text/css" />
+    <link rel="stylesheet" href="../css/stylesheet.css" type="text/css" />
+    <link rel="stylesheet" href="../modules/module_clock.css" type="text/css" />
+    <script type="text/javascript" src="../js/code.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../modules/module_clock.js"></script>
+  </head>
+
+  <body>
+    <div class="sized">
+      <div class="psize back">
+        <div id="snackbar"></div>
+        <div id="settings_categories">
+          <a href="#interface"><img src="../assets/icons/pc.png" />Interface</a>
+          <a href="#network"
+            ><img src="../assets/icons/wireless.png" />Network</a
+          >
+          <a href="#system"><img src="../assets/icons/cogwheel.png" />System</a>
+        </div>
+        <div id="settings_list">
+          <div id="settings_list_scrollable">
+            <a>Setting 1 (Next Setting)</a>
+            <a>Setting 2 (Yes/No)</a>
+            <a>Setting 3 (Slider)</a>
+            <a>Setting 4 (Collapsible)</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+            <a>Setting</a>
+          </div>
+        </div>
+      </div>
+      <div class="psize front">
+        <div class="front_header">
+          <a id="digitalClock" class="front_header_big">13:11</a>
+        </div>
+      </div>
+      <a
+        id="bt_back"
+        class="clickable"
+        onclick="goHome(); return false;"
+        style="content: url(../assets/icons/back.png);"
+      ></a>
+      <a
+        id="bt_mute"
+        class="clickable"
+        style="content: url(../assets/icons/mute.png);"
+      ></a>
+    </div>
+
+    <script>
+      syncClock();
+      syncDigitalClock();
+    </script>
+  </body>
+</html>

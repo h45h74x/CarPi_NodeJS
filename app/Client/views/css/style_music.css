@@ -1,0 +1,49 @@
+.debugborder {
+  border: 2px solid sandybrown;
+}
+
+#panel_music {
+  width: 600px;
+  height: 350px;
+}
+
+#img-albumcover {
+  width: 200px;
+  height: 200px;
+
+  top: 50px;
+}
+
+#lbl_songname {
+  font-size: 30px;
+  color: white;
+}
+
+#action-play {
+  position: relative;
+  top: 100px;
+  left: 100px;
+}
+
+#action-skip-fwd {
+  position: relative;
+  top: 200px;
+  left: 170px;
+}
+
+#action-skip-prev {
+  position: relative;
+  top: 200px;
+  left: -270px;
+}
+
+.btn_skip {
+  display: inline-block;
+
+  width: 100px;
+  height: 100px;
+
+  background-color: #45bdc3;
+  border: 2px solid #37979c;
+  border-radius: 100%;
+}

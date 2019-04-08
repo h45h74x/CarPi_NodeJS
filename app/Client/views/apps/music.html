@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music</title>
+    <link rel="stylesheet" href="./css/stylesheet.css" type="text/css" />
+    <link rel="stylesheet" href="./css/style_music.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="./css/bootstrap/bootstrap.css"
+      type="text/css"
+    />
+
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+  </head>
+
+  <body>
+    <div class="sized">
+      <div class="psize back">
+        <div id="panel_music" class="debugborder centered centerchildren">
+          <img
+            id="img-albumcover"
+            class="debugborder centered"
+            src="assets/images/music/index.png"
+            alt="album-cover"
+          />
+
+          <a id="lbl_songname" class="centered">Song name</a>
+          <a href="/spotify/song-play" id="action-play" class="centered btn_skip"
+            >Play</a
+          >
+          
+          <a
+            href="/spotify/song-skip-fwd"
+            class="centered btn_skip"
+            id="action-skip-fwd"
+            >Skip</a
+          >
+          <a
+            href="/spotify/song-skip-prev"
+            class="centered btn_skip"
+            id="action-skip-prev"
+            >Back</a
+          >
+        </div>
+      </div>
+      <!-- <div class="psize front"></div> -->
+    </div>
+    <script>
+      var id = null;
+      $(document).ready(function() {
+        tid = setInterval(getCurrentSong, 2000);
+
+        $("#action-play").on("click", function(e) {
+          console.log(this.href);
+          e.preventDefault();
+          $.post(this.href);
+        });
+        $("#action-skip-fwd").on("click", function(e) {
+          console.log(this.href);
+          e.preventDefault();
+          $.post(this.href);
+        });
+        $("#action-skip-prev").on("click", function(e) {
+          console.log(this.href);
+          e.preventDefault();
+          $.post(this.href);
+        });
+      });
+
+      function getCurrentSong() {
+        console.log("Tick\n");
+        $.get(
+          "localhost:8888/getSong",
+          function(data, status) {
+            console.log(
+              "status: " + status + "\n data: " + data + "\n########"
+            );
+          },
+          "json"
+        );
+      }
+
+      function cancelTimer() {
+        clearInterval(tid);
+      }
+    </script>
+  </body>
+</html>

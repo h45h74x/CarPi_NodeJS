@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Navigation</title>
+    <link rel="stylesheet" href="../css/animations.css" type="text/css" />
+    <link rel="stylesheet" href="../css/stylesheet.css" type="text/css" />
+    <link rel="stylesheet" href="../modules/module_clock.css" type="text/css" />
+    <script type="text/javascript" src="../js/code.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../modules/module_clock.js"></script>
+  </head>
+
+  <body>
+    <div class="sized">
+        <div class="psize back">
+        <div id="snackbar"></div>
+        <iframe style="left:230px; top: 70px;" width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=5020&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+      </div>
+      <div class="psize front">
+        <div class="front_header">
+          <a id="digitalClock" class="front_header_big">13:11</a>
+        </div>
+      </div>
+      <a
+        id="bt_back"
+        class="clickable"
+        onClick="goBack()"
+        style="content: url(../assets/icons/back.png);"
+      ></a>
+      <a
+        id="bt_mute"
+        class="clickable"
+        style="content: url(../assets/icons/mute.png);"
+      ></a>
+    </div>
+
+    <script>
+      syncClock();
+      syncDigitalClock();
+    </script>
+  </body>
+</html>

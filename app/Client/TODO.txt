@@ -1,0 +1,4 @@
+- Click/Swipe/Swap button on clock swaps to music control or an other widgets
+
+Telegram bot to send youtube / spotify linkt to. Adds music to queue
+    with phone number whitelist (or prompt on car screen)

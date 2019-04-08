@@ -1,0 +1,410 @@
+/* Click through div to underlying elements - https://stackoverflow.com/questions/3680429/click-through-div-to-underlying-elements */
+:root {
+  --col_accent: #e2474b;
+  --col_darker: #2f3a56;
+  --col_dark: rgb(67, 96, 124);
+  --col_accent: rgb(47, 201, 240);
+  --col_light: #a8d0da;
+  --col_lighter: #d8e8e8;
+  --angle_gradient: 147;
+
+  --menu_bt_size: 70px;
+}
+
+@font-face {
+  font-family: Titillium;
+  src: url(../fonts/TitilliumWeb-Regular.ttf);
+}
+@font-face {
+  font-family: Titillium Bold;
+  src: url(../fonts/TitilliumWeb-Bold.ttf);
+}
+@font-face {
+  font-family: Titillium Light;
+  src: url(../fonts/TitilliumWeb-Light.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: Roboto Bold;
+  src: url(../fonts/Roboto-Bold.ttf);
+}
+@font-face {
+  font-family: Roboto Light;
+  src: url(../fonts/Roboto-Light.ttf);
+}
+
+* {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: Roboto;
+
+  outline: 0;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+a {
+  text-decoration: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+hr {
+  width: 100%;
+  border-top: 2px solid #fff;
+  opacity: 0.9;
+}
+
+#settings_categories {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 113, 183, 0.3),
+    rgba(0, 113, 183, 0.3),
+    rgba(0, 113, 183, 0)
+  );
+  padding-right: 8px;
+  position: relative;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+}
+
+#settings_categories a {
+  position: relative;
+  top: 50px;
+  border-bottom: 2px solid #fff;
+  display: flex;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  height: 40px;
+  width: 100%;
+  color: #fff;
+  font-size: 30px;
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+  border-image-slice: 1;
+}
+
+#settings_categories a img {
+  filter: brightness(0) invert(1);
+  top: 3px;
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+  height: calc(100% - 7px);
+}
+
+#settings_list {
+  display: inline-block;
+  width: 60%;
+  left: 25%;
+  top: 0;
+  height: 97%;
+  overflow: hidden;
+}
+#settings_list_scrollable {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 20px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+
+#settings_list a {
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  top: 70px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  height: 30px;
+  width: 100%;
+  color: #fff;
+  font-size: 25px;
+  font-family: Roboto Light;
+}
+
+#snackbar {
+  visibility: hidden;
+  width: 200px;
+  border: 2px solid var(--col_accent);
+  background-color: var(--col_darker);
+  color: var(--col_accent);
+  text-align: center;
+  border-radius: 7px;
+  padding: 16px;
+  opacity: 0.9;
+
+  position: absolute;
+  margin: auto;
+  left: calc(50% - 116px);
+  bottom: 40px;
+  font-size: 17px;
+  z-index: 1;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: swing-in-top-bck 0.5s, swing-out-top-bck 0.5s 2.5s;
+  animation: swing-in-top-bck 0.5s, swing-out-top-bck 0.5s 2.5s;
+}
+
+#bt_back,
+#bt_mute {
+  position: absolute;
+  top: 80%;
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+  background-color: rgba(39, 73, 105, 0.8);
+  border-radius: 50px;
+}
+#bt_back {
+  left: 5%;
+}
+#bt_mute {
+  left: calc(95% - 60px);
+}
+
+.menu_bt_main_r_img,
+.menu_bt_main_l_img {
+  height: var(--menu_bt_size);
+  width: var(--menu_bt_size);
+  top: 0px;
+  padding: calc(var(--menu_bt_size) * 0.1);
+  background-color: rgba(39, 73, 105, 0.5);
+  border-radius: var(--menu_bt_size);
+}
+.menu_bt_main_r_img {
+  left: 0px;
+}
+
+.menu_bt_main_l_img {
+  right: 0px;
+}
+
+.menu_bt_main_r_text,
+.menu_bt_main_l_text {
+  margin-top: calc(var(--menu_bt_size) * 0.15);
+
+  font-size: calc(var(--menu_bt_size) - 30px);
+  color: white;
+}
+.menu_bt_main_r_text {
+  margin-left: calc(var(--menu_bt_size) + 20px);
+}
+.menu_bt_main_l_text {
+  margin-left: 50px;
+}
+
+.menu_bt_main_r,
+.menu_bt_main_l {
+  position: relative;
+  top: 130px;
+
+  display: inline-block;
+  width: 250px;
+  height: var(--menu_bt_size);
+
+  padding: calc(var(--menu_bt_size) * 0.1);
+  padding-left: 10px;
+  padding-right: 50px;
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  border-radius: var(--menu_bt_size);
+  background-color: var(--col_darker);
+  background: linear-gradient(
+    to left,
+    rgba(66, 82, 121, 0) 25%,
+    rgba(66, 82, 121, 0.8) 80%
+  );
+}
+.menu_bt_main_r {
+  left: -35px;
+
+  padding-left: 10px;
+  padding-right: 50px;
+
+  background: linear-gradient(
+    to left,
+    rgba(66, 82, 121, 0) 25%,
+    rgba(66, 82, 121, 0.8) 80%
+  );
+}
+.menu_bt_main_l {
+  left: 50px;
+
+  padding-left: 50px;
+  padding-right: 10px;
+
+  background: linear-gradient(
+    to right,
+    rgba(66, 82, 121, 0) 25%,
+    rgba(66, 82, 121, 0.8) 80%
+  );
+}
+
+.front_header {
+  width: 250px;
+  height: 50px;
+  position: absolute;
+  left: calc(50% - 250px / 2);
+
+  text-align: center;
+  overflow: hidden;
+}
+
+.front_header_big {
+  position: relative;
+  font-size: 25pt;
+  font-weight: bold;
+  color: white;
+
+  text-align: center;
+  top: 6px;
+}
+
+.menu_left,
+.menu_middle,
+.menu_right {
+  width: 33%;
+  height: 100%;
+  top: 0;
+  margin: auto;
+}
+
+.menu_left {
+  left: 0;
+}
+
+.menu_middle {
+  left: calc(100% / 3);
+}
+
+.menu_right {
+  left: calc(200% / 3);
+}
+
+.centered {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}
+
+.centerchildren {
+  text-align: center;
+}
+
+.sized {
+  height: 600px;
+  width: 1024px;
+  background-color: var(--col_dark);
+}
+
+/* parent size */
+.psize {
+  height: 100%;
+  width: 100%;
+}
+
+.front {
+  background-image: url("../assets/backgrounds/bg_overlay.png");
+  pointer-events: none;
+}
+
+.back {
+  background-image: url("../assets/backgrounds/bg_default.png");
+}
+
+#splash_image {
+  left: 490px;
+  top: 60px;
+  height: 580px;
+  opacity: 0.65;
+}
+
+#splash_text {
+  left: 50px;
+  top: 60px;
+  height: 100px;
+  opacity: 0.9;
+}
+
+#splash_loadingtext {
+  top: 503px;
+  left: 120px;
+
+  font-family: Arial;
+  font-size: 33px;
+  color: #ffffff;
+
+  opacity: 0.8;
+}
+
+#splash_loadinganim {
+  top: 490px;
+  left: 50px;
+
+  opacity: 0.8;
+}
+
+.lds-facebook {
+  display: inline-block;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+  50%,
+  100% {
+    top: 19px;
+    height: 26px;
+  }
+}

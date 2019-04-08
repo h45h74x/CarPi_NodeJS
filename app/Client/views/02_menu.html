@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="./css/animations.css" type="text/css" />
+    <link rel="stylesheet" href="./css/stylesheet.css" type="text/css" />
+    <link rel="stylesheet" href="./modules/module_clock.css" type="text/css" />
+    <script type="text/javascript" src="./js/code.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./modules/module_clock.js"></script>
+  </head>
+
+  <body>
+    <div class="sized">
+      <div class="psize back">
+        <div id="snackbar"></div>
+        <div class="menu_left">
+          <div class="clickable menu_bt_main_l" style="margin-left: -10px;">
+            <a
+              href="apps/music.html"
+              class="menu_bt_main_l_img pulsate-fwd"
+              style="content: url(../assets/icons/spotify.png);"
+            ></a>
+            <a href="apps/music.html" class="menu_bt_main_l_text">Music</a>
+          </div>
+          <div
+            class="clickable menu_bt_main_l"
+            style="margin-left: -30px;"
+            onclick="showSnackbar('Starting QT WebView...')"
+          >
+            <a
+              class="menu_bt_main_l_img pulsate-fwd"
+              style="content: url(../assets/icons/video.png);"
+            ></a>
+            <a class="menu_bt_main_l_text">Video</a>
+          </div>
+          <div
+            class="clickable menu_bt_main_l"
+            style="margin-left: -10px;"
+            onclick="showSnackbar('Starting QT WebView...')"
+          >
+            <a
+              class="menu_bt_main_l_img pulsate-fwd"
+              style="content: url(../assets/icons/globe.png);"
+            ></a>
+            <a class="menu_bt_main_l_text" style="margin-left: 70px;">Web</a>
+          </div>
+        </div>
+        <div class="menu_middle">
+          <div class="clock">
+            <div class="clock__second"></div>
+            <div class="clock__minute"></div>
+            <div class="clock__hour"></div>
+            <div class="clock__axis"></div>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+            <section class="clock__indicator"></section>
+          </div>
+        </div>
+        <div class="menu_right">
+         
+            <div class="clickable menu_bt_main_r" style="margin-left: 10px;">
+              <a href="apps/maps.html"
+                class="menu_bt_main_r_img pulsate-fwd"
+                style="content: url(../assets/icons/maps.png);"
+              ></a>
+              <a href="apps/maps.html" class="menu_bt_main_r_text">Maps</a>
+            </div>
+         
+            <div class="clickable menu_bt_main_r" style="margin-left: 40px;">
+              <a
+              href="apps/stats.html"
+                class="menu_bt_main_r_img pulsate-fwd"
+                style="content: url(../assets/icons/stats.png);"
+              ></a>
+              <a href="apps/stats.html" class="menu_bt_main_r_text">Stats</a>
+            </div>
+            <div class="clickable menu_bt_main_r" style="margin-left: 10px;">
+              <a
+              href="apps/settings.html"
+                class="menu_bt_main_r_img pulsate-fwd"
+                style="content: url(../assets/icons/settings.png);"
+              ></a>
+              <a href="apps/settings.html" class="menu_bt_main_r_text">Settings</a>
+            </div>
+        </div>
+      </div>
+      <div class="psize front">
+        <div class="front_header">
+          <a id="digitalClock" class="front_header_big">13:11</a>
+        </div>
+      </div>
+      <a id="bt_mute" class="clickable" style="content: url(../assets/icons/mute.png);"></a>
+    </div>
+
+    <script>
+      syncClock();
+      syncDigitalClock();
+    </script>
+  </body>
+</html>

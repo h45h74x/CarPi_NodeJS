@@ -1,0 +1,18 @@
+{
+  "client": {
+    "port": "8888"
+  },
+  "spotify": {
+    "stateKey": "spotify_auth_state",
+    "scope": "playlist-read-private playlist-modify-private playlist-modify-public playlist-read-collaborative user-modify-playback-state user-read-currently-playing user-read-playback-state user-top-read user-read-recently-played app-remote-control streaming user-read-birthdate user-read-email user-read-private user-follow-read user-follow-modify user-library-modify user-library-read",
+
+    "uri_api": "https://api.spotify.com",
+    "uri_token": "https://accounts.spotify.com/api/token",
+    "redirect_uri": "http://localhost:8888/spotify/callback",
+
+    "client_id": "c3264e30e3bb459a9dab6345a7115708",
+    "client_secret": "aabeb85e21d54d77bc1b7455b348c127",
+
+    "refresh_token": ""
+  }
+}
